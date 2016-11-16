@@ -1,0 +1,15 @@
+#!/bin/sh
+echo -n "insert dataset name(EX:horizontal,vertical,views):"
+read dataset
+echo -n "insert GPU number:"
+read gpu
+echo -n "insert GPU factor:"
+read gpu_factor
+if [ -z "$gpu" ]||[ -z "$gpu_factor" ]
+then
+    echo "Please insert GPU number and GPU factor \n"
+exit
+else
+CUDA_VISIBLE_DEVICES=$gpu python main_test.py  --gpu $gpu_factor --dataset $dataset --batch_size 1 --image_wid 768 --image_hei 768 
+fi
+
